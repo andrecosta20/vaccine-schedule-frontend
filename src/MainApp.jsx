@@ -18,34 +18,36 @@ const MainApp = () => {
   };
 
   const addSchedule = (newSchedule) => {
-    
+    // Lógica para adicionar um novo agendamento
   };
 
   return (
     <Router>
-      <div className="container">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Agendamento</Link>
-            </li>
-            <li>
-              <Link to="/consultar">Consultar Agendamentos</Link>
-            </li>
-          </ul>
-        </nav>
-        <Routes>
-          <Route path="/" element={<SchedulePage openModal={openModal} addSchedule={addSchedule} />} />
-          <Route path="/consultar" element={<ConsultaPage />} />
-        </Routes>
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          contentLabel="Agendamento Criado"
-        >
-          <h2>Agendamento criado com sucesso!</h2>
-          <button onClick={closeModal}>Fechar</button>
-        </Modal>
+      <div>
+        <header>
+          <nav>
+            <ul>
+              <li><Link to="/">Agendamento</Link></li>
+              <li><Link to="/consultar">Consultar Agendamentos</Link></li>
+            </ul>
+          </nav>
+        </header>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<SchedulePage openModal={openModal} addSchedule={addSchedule} />} />
+            <Route path="/consultar" element={<ConsultaPage />} />
+          </Routes>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            contentLabel="Agendamento Criado"
+            className="success-modal"
+            overlayClassName="Overlay"
+          >
+            <div className="success-message">Agendamento criado com sucesso!</div>
+            <button onClick={closeModal} className="success-button">Fechar</button>
+          </Modal>
+        </div>
       </div>
     </Router>
   );
