@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
@@ -50,17 +50,17 @@ const ScheduleForm = ({ openModal, addSchedule }) => {
     >
       {({ errors, touched, setFieldValue }) => (
         <Form>
-          <div>
+          <div className="form-group">
             <label>Nome</label>
             <Field name="name" />
-            {errors.name && touched.name ? (<div>{errors.name}</div>) : null}
+            <ErrorMessage name="name" component="div" className="error-message" />
           </div>
-          <div>
+          <div className="form-group">
             <label>Data de Nascimento</label>
             <Field name="birthDate" type="date" />
-            {errors.birthDate && touched.birthDate ? (<div>{errors.birthDate}</div>) : null}
+            <ErrorMessage name="birthDate" component="div" className="error-message" />
           </div>
-          <div>
+          <div className="form-group">
             <label>Data</label>
             <DatePicker
               selected={startDate}
@@ -70,12 +70,12 @@ const ScheduleForm = ({ openModal, addSchedule }) => {
               }}
               dateFormat="yyyy-MM-dd"
             />
-            {errors.date && touched.date ? (<div>{errors.date}</div>) : null}
+            <ErrorMessage name="date" component="div" className="error-message" />
           </div>
-          <div>
+          <div className="form-group">
             <label>Hora</label>
             <Field name="time" type="time" />
-            {errors.time && touched.time ? (<div>{errors.time}</div>) : null}
+            <ErrorMessage name="time" component="div" className="error-message" />
           </div>
           <button type="submit">Agendar</button>
         </Form>
