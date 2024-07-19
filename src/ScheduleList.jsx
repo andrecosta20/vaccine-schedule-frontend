@@ -51,7 +51,7 @@ const ScheduleList = () => {
       <ul>
         {Object.keys(groupedSchedules).map((key) => (
           <li key={key}>
-            <strong>{key}</strong>
+            <strong> Dia do Agendamento: {key}</strong>
             <ul>
               {groupedSchedules[key].map((schedule, index) => (
                 <li
@@ -60,6 +60,7 @@ const ScheduleList = () => {
                 >
                   {schedule.name} - {schedule.birthDate} - {schedule.status}
                   <select
+                    className="custom-select"
                     value={schedule.status}
                     onChange={(e) => handleStatusChange(schedule.index, e.target.value)}
                   >
